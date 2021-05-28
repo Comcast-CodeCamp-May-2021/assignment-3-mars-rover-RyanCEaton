@@ -14,10 +14,10 @@ class Rover {
        completed = {};
        completed["Completed"] = true;
        let roverStatus = {};
-       roverStatus["Position"] = this.position;
-       roverStatus["Mode"] = this.mode;
-       roverStatus["Generator_Watts"] = this.generatorWatts; 
-       completed["Rover_Status"] = roverStatus;
+       roverStatus["position"] = this.position;
+       roverStatus["mode"] = this.mode;
+       roverStatus["generatorWatts"] = this.generatorWatts; 
+       completed["roverStatus"] = roverStatus;
     }
     if (commandObject.commandType === 'MODE_CHANGE') {
       completed = {};

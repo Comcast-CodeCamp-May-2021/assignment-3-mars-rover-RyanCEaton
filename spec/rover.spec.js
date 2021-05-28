@@ -37,9 +37,9 @@ describe("Rover class", function() {
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
     let check = response.results[0];
-    expect(check.Rover_Status.Position).toEqual(98382);
-    expect(check.Rover_Status.Mode).toEqual('NORMAL');
-    expect(check.Rover_Status.Generator_Watts).toEqual(110);
+    expect(check.roverStatus.position).toEqual(98382);
+    expect(check.roverStatus.mode).toEqual('NORMAL');
+    expect(check.roverStatus.generatorWatts).toEqual(110);
   });
 // Test 11
   it("responds correctly to mode change command", function() {
@@ -47,7 +47,6 @@ describe("Rover class", function() {
     let message = new Message('Rover Mode change to LOW_POWER', commands);
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
-    let check = response.results[0];
     expect(rover.mode).toEqual('LOW_POWER');
   });
 // // Test 12
@@ -65,22 +64,7 @@ describe("Rover class", function() {
     let message = new Message('Move the Rover to 555', commands);
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
+    expect(rover.position).toEqual(555);
   });
 });
 
-
-// let testRover = new Rover(444);
-// let testCommandOne = new Command("MOVE", 222);
-// let testCommandTwo = new Command("MOVE", 555);
-// let testCommandThree = new Command("STATUS_CHECK");
-// let testCommandFour = new Command("MODE_CHANGE", "LOW_POWER");
-// let testCommandFive = new Command("MOVE", 666); // attempt to move when in LOW_POWER
-// let testCommandSix = new Command("STATUS_CHECK");
-// // // whew that's a lot of commands, but luckily we can send them all in one message:
-// let testMessage = new Message("Six commands for our rover", [testCommandOne, testCommandTwo, testCommandThree, testCommandFour, testCommandFive, testCommandSix]);
-// let messageResponse = testRover.receiveMessage(testMessage); 
-// console.log(messageResponse); // what do we expect? .message .results (how many results? what should each of those results look like?)
-// // console.log(messageResponse.results[2]); // what do we expect?
-// console.log(messageResponse.results[2].roverStatus.position); // what do we expect?
-// // console.log(messageResponse.results[4]); // what do we expect?
-// console.log(messageResponse.results[5].roverStatus);
