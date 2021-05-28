@@ -20,5 +20,4 @@ describe("Message class", function() {
     let message = new Message('Another message!', commands);
     expect(message.commands).toEqual(commands);
   });
-
 });
